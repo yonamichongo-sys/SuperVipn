@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Your Data - Super ViPN</title>
+  <style>
+    :root {
+      --bg: #070d19;
+      --card: #0e1729;
+      --border: #1f2d46;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #00e5ff;
+      --emerald: #10b981;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px 28px;
+    }
+    h1 { margin-top: 0; font-size: 1.9rem; color: var(--text); }
+    h2 {
+      margin-top: 28px;
+      font-size: 1.25rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    p, li { color: var(--muted); font-size: 0.98rem; }
+    strong { color: var(--text); }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    ol, ul { padding-left: 22px; }
+    li { margin-bottom: 10px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .step-card {
+      background: rgba(0, 229, 255, 0.06);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+    .step-card ol { margin: 0; }
+    .step-card li { color: var(--text); font-weight: 500; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 22px;
+      font-size: 0.92rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th { color: var(--accent); font-weight: 700; }
+    .footer {
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">Data Deletion</div>
+    <h1>Delete Your Data — Super ViPN</h1>
+    <p><strong>Last Updated:</strong> October 2026</p>
+
+    <p>
+      <strong>Super ViPN</strong> ("the App") does not require an account, username, or password, so there is
+      no traditional "account deletion" step. Instead, the App's technical connection data — the information
+      needed to operate your VPN tunnel — is deleted either automatically or on request, as described below.
+    </p>
+
+    <h2>How to request deletion</h2>
+    <div class="step-card">
+      <p style="color: var(--text); margin-top: 0;">Choose any one of the following methods:</p>
+      <ol>
+        <li><strong>Automatic — Disconnect in the App.</strong> Open Super ViPN and tap <strong>Disconnect</strong>.
+          This immediately and permanently removes your device's connection data from our servers — no waiting
+          period, no further action needed.</li>
+        <li><strong>Automatic — Uninstall the App.</strong> Uninstalling Super ViPN removes all data stored
+          locally on your device (your encryption keys and session preferences). If you did not tap Disconnect
+          first, your device's server-side connection record is automatically deleted after a short period of
+          inactivity (see the retention table below).</li>
+        <li><strong>Manual request — Email us.</strong> If you want your connection data deleted immediately
+          and cannot open the App to disconnect (e.g. you already uninstalled it), email us at
+          <a href="mailto:greybirdproject@gmail.com">greybirdproject@gmail.com</a> from the email address you
+          used (if any) or include the approximate date and time you last used the App. We will locate and
+          delete the associated record and confirm by reply within a reasonable time.</li>
+      </ol>
+    </div>
+
+    <h2>What is deleted, what is kept, and for how long</h2>
+    <table>
+      <tr>
+        <th>Data</th>
+        <th>Deleted / Retained</th>
+      </tr>
+      <tr>
+        <td>WireGuard public key &amp; assigned virtual IP address</td>
+        <td><strong>Deleted immediately</strong> when you disconnect in the App. If never manually disconnected,
+          it is automatically deleted after <strong>30 days</strong> of inactivity, or after
+          <strong>7 days</strong> if the device registered but never actually connected.</td>
+      </tr>
+      <tr>
+        <td>WireGuard private key</td>
+        <td>Never sent to our servers. Stored only on your device, encrypted via Android KeyStore. Deleted the
+          moment you uninstall the App.</td>
+      </tr>
+      <tr>
+        <td>Local session preferences (timer, selected server)</td>
+        <td>Stored only on your device. Deleted when you clear the App's storage or uninstall it.</td>
+      </tr>
+      <tr>
+        <td>IP address used for rate-limiting abuse prevention</td>
+        <td>Held in server memory only, never written to disk, and automatically discarded within
+          <strong>1 hour</strong>.</td>
+      </tr>
+      <tr>
+        <td>Advertising ID (via Google AdMob)</td>
+        <td>Not collected or stored by us directly. Managed by Google; you can reset or delete it at any time
+          via your device's <em>Settings &rarr; Google &rarr; Ads</em> menu.</td>
+      </tr>
+    </table>
+
+    <h2>Questions</h2>
+    <p>
+      For anything not covered here, or questions about this process, contact us at
+      <a href="mailto:greybirdproject@gmail.com">greybirdproject@gmail.com</a>. See also our full
+      <a href="https://claude.ai/artifact/QNXejkmg4R3pwegqSJfJG4" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+    </p>
+
+    <div class="footer">&copy; 2026 Super ViPN. All rights reserved.</div>
+  </div>
+</body>
+</html>
