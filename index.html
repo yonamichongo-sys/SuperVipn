@@ -110,7 +110,7 @@
 
     <h2>2. Use of Android VpnService</h2>
     <p>
-      Super ViPN uses the official Android <code>android.net.VpnService</code> API as its core functionality to establish an encrypted device-level <strong>WireGuard</strong> tunnel between your Android device and our selected VPN server node (e.g., France 1, France 2, France 3).
+      Super ViPN uses the official Android <code>android.net.VpnService</code> API as its core functionality to establish an encrypted device-level <strong>WireGuard</strong> tunnel between your Android device and our VPN server infrastructure.
     </p>
     <ul>
       <li>All network traffic routed through the VPN tunnel is encrypted on your device using modern WireGuard cryptography before transmission.</li>
@@ -124,6 +124,7 @@
     <ul>
       <li><strong>WireGuard Public Key:</strong> Your device generates a local Curve25519 keypair stored securely using Android KeyStore encryption. The private key never leaves your device. Only the public key is transmitted over HTTPS to our VPN provisioning server (<code>/register</code>) to allocate a temporary virtual IP address, and to <code>/deregister</code> when you disconnect so your peer session is removed from the server.</li>
       <li><strong>Local Session Preferences:</strong> Your remaining session timer and selected server node are stored locally on your device via Android <code>SharedPreferences</code> and can be cleared at any time by clearing the App's storage or uninstalling the App.</li>
+      <li><strong>Abuse Prevention (Rate Limiting):</strong> To prevent automated abuse of our registration system, our server temporarily checks the IP address a registration request comes from against a short-term limit. This check happens in memory only, is never written to persistent storage, and is automatically discarded after one hour.</li>
     </ul>
 
     <h2>4. Third-Party Services Used by the App</h2>
